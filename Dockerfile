@@ -14,7 +14,8 @@ FROM debian:bullseye-slim
 
 MAINTAINER Dmitry Astapov <dastapov@gmail.com>
 
-RUN apt-get update && apt-get install --yes libgmp10 libtinfo6 sudo && rm -rf /var/lib/apt/lists
+RUN apt-get update && apt-get install --yes libgmp10 libtinfo6 sudo python3-pip  && rm -rf /var/lib/apt/lists
+RUN pip install ledger-autosync
 RUN adduser --system --ingroup root hledger && usermod -aG sudo hledger && mkdir /.cache && chmod 0777 /.cache
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
